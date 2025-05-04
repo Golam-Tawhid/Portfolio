@@ -39,7 +39,7 @@ const Hero = () => {
             <div className="w-72 h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-2xl absolute -z-10 animate-pulse-slow"></div>
             <div className="w-full aspect-square rounded-3xl overflow-hidden animate-fade-in">
               <img
-                src="public/gtf.png"
+                src="/gtf.png"
                 alt="Md Golam Tawhid Fahad"
                 className="w-full h-full object-cover"
               />
