@@ -19,43 +19,43 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce application with product catalog, cart functionality, and payment processing.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    title: "Archival System",
+    description: "Platform to manage university RECoT activities.",
+    image: "",
+    tags: ["Flask", "React.js", "MUI"],
     demoUrl: "#",
     repoUrl: "#",
     category: "Web App"
   },
   {
     id: 2,
-    title: "Weather Dashboard",
-    description: "Real-time weather application that displays forecasts and historical weather data with interactive charts.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    tags: ["React", "Chart.js", "Weather API", "Tailwind CSS"],
+    title: "Cosmic Runner",
+    description: "2D game with dynamic obstacles.",
+    image: "",
+    tags: ["Pygame"],
     demoUrl: "#",
     repoUrl: "#",
-    category: "Web App"
+    category: "Game"
   },
   {
     id: 3,
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates, drag-and-drop interface, and team permissions.",
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-    tags: ["Vue.js", "Firebase", "Tailwind CSS", "Drag & Drop"],
+    title: "ReadVenture",
+    description: "Book exchange and review platform.",
+    image: "",
+    tags: ["Django"],
     demoUrl: "#",
     repoUrl: "#",
     category: "Web App"
   },
   {
     id: 4,
-    title: "Finance Tracker",
-    description: "Personal finance application for tracking expenses, creating budgets, and visualizing spending habits.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    tags: ["React", "D3.js", "Express", "PostgreSQL"],
+    title: "Silent Speech Recognition",
+    description: "Lip-reading with 85%+ accuracy.",
+    image: "",
+    tags: ["TensorFlow", "OpenCV"],
     demoUrl: "#",
     repoUrl: "#",
-    category: "Web App"
+    category: "AI"
   }
 ];
 

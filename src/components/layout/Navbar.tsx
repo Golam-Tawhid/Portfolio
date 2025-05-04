@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, Moon, Sun } from "lucide-react";
@@ -9,6 +8,8 @@ const NAV_ITEMS = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Research", href: "#research" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
@@ -68,11 +69,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container-wide flex items-center justify-between py-4">
-        <a
-          href="#home"
-          className="text-xl md:text-2xl font-bold gradient-text"
-        >
-          Jane Doe
+        <a href="#home" className="text-xl md:text-2xl font-bold gradient-text">
+          Golam Tawhid
         </a>
 
         {isMobile ? (

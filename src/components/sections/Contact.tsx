@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,20 +49,20 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contact@example.com",
-      href: "mailto:contact@example.com",
+      value: "tawhidfahad199@gmail.com",
+      href: "mailto:tawhidfahad199@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+8801703045450",
+      href: "tel:+8801703045450",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
-      href: "https://maps.google.com/?q=San+Francisco,+CA",
+      value: "Badda, Dhaka, Bangladesh",
+      href: "https://maps.google.com/?q=Badda,+Dhaka,+Bangladesh",
     },
   ];
 
