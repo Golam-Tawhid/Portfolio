@@ -14,7 +14,15 @@ const NAV_ITEMS = [
   { name: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  showBackToPortfolioButton?: boolean;
+  showOnlyBackToPortfolioButton?: boolean;
+}
+
+const Navbar = ({
+  showBackToPortfolioButton = false,
+  showOnlyBackToPortfolioButton = false,
+}: NavbarProps) => {
   const isMobile = useIsMobile();
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -97,18 +105,28 @@ const Navbar = () => {
             {isMenuOpen && (
               <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-md z-40 animate-fade-in">
                 <nav className="flex flex-col items-center justify-center h-full">
-                  {NAV_ITEMS.map((item) => (
+                  {!showOnlyBackToPortfolioButton &&
+                    NAV_ITEMS.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={`nav-link text-2xl my-4 ${
+                          activeSection === item.href.slice(1) ? "active" : ""
+                        }`}
+                        onClick={closeMenu}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  {showBackToPortfolioButton && (
                     <a
-                      key={item.name}
-                      href={item.href}
-                      className={`nav-link text-2xl my-4 ${
-                        activeSection === item.href.slice(1) ? "active" : ""
-                      }`}
+                      href="/"
+                      className="nav-link text-2xl my-4"
                       onClick={closeMenu}
                     >
-                      {item.name}
+                      Back to Portfolio
                     </a>
-                  ))}
+                  )}
                 </nav>
               </div>
             )}
@@ -116,17 +134,18 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-8">
             <nav className="flex items-center gap-6">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`nav-link ${
-                    activeSection === item.href.slice(1) ? "active" : ""
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ))}
+              {!showOnlyBackToPortfolioButton &&
+                NAV_ITEMS.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`nav-link ${
+                      activeSection === item.href.slice(1) ? "active" : ""
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                ))}
             </nav>
             <Button
               variant="ghost"
@@ -136,6 +155,11 @@ const Navbar = () => {
             >
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </Button>
+            {showBackToPortfolioButton && (
+              <Button variant="outline" asChild className="ml-4">
+                <a href="/">Back to Portfolio</a>
+              </Button>
+            )}
           </div>
         )}
       </div>
