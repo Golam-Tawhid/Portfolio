@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+// import Navbar from "../components/layout/Navbar";
 
 interface BlogPost {
   id: number;
@@ -102,121 +103,124 @@ const BlogList = () => {
   };
   
   return (
-    <div className="pt-20">
-      <div className="container-wide py-10">
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Blog</h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Thoughts, tutorials, and insights about web development, design, and technology.
-          </p>
-        </div>
-        
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full md:w-2/3">
-              <Input
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full"
-              />
-            </div>
-            <div className="w-full md:w-1/3 flex items-center justify-end">
-              <p className="text-sm text-muted-foreground">
-                Showing {filteredPosts.length} of {ALL_BLOG_POSTS.length} articles
-              </p>
+    <>
+      <Navbar />
+      <div className="pt-20">
+        <div className="container-wide py-10">
+          <div className="mb-8 text-center">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Blog</h1>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Thoughts, tutorials, and insights about web development, design, and technology.
+            </p>
+          </div>
+          
+          <div className="mb-8">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full md:w-2/3">
+                <Input
+                  placeholder="Search articles..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full"
+                />
+              </div>
+              <div className="w-full md:w-1/3 flex items-center justify-end">
+                <p className="text-sm text-muted-foreground">
+                  Showing {filteredPosts.length} of {ALL_BLOG_POSTS.length} articles
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="mb-8 overflow-auto pb-4">
-          <div className="flex gap-2 flex-nowrap">
-            <Button
-              variant={selectedTag === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTag(null)}
-              className="rounded-full whitespace-nowrap"
-            >
-              All Posts
-            </Button>
-            {ALL_TAGS.map((tag) => (
+          
+          <div className="mb-8 overflow-auto pb-4">
+            <div className="flex gap-2 flex-nowrap">
               <Button
-                key={tag}
-                variant={selectedTag === tag ? "default" : "outline"}
+                variant={selectedTag === null ? "default" : "outline"}
                 size="sm"
-                onClick={() => handleTagClick(tag)}
+                onClick={() => setSelectedTag(null)}
                 className="rounded-full whitespace-nowrap"
               >
-                {tag}
+                All Posts
               </Button>
-            ))}
+              {ALL_TAGS.map((tag) => (
+                <Button
+                  key={tag}
+                  variant={selectedTag === tag ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => handleTagClick(tag)}
+                  className="rounded-full whitespace-nowrap"
+                >
+                  {tag}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
-        
-        {filteredPosts.length === 0 ? (
-          <div className="text-center py-12">
-            <h2 className="text-xl font-semibold mb-2">No articles found</h2>
-            <p className="text-muted-foreground mb-4">
-              Try adjusting your search or filter to find what you're looking for.
-            </p>
-            <Button onClick={() => { setSearchTerm(""); setSelectedTag(null); }}>
-              Clear filters
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden card-hover">
-                <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={post.coverImage} 
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute top-2 right-2">
-                    <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
-                      {post.date}
-                    </Badge>
-                  </div>
-                </div>
-                
-                <CardHeader>
-                  <CardTitle>{post.title}</CardTitle>
-                </CardHeader>
-                
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <Badge 
-                        key={tag} 
-                        variant="outline"
-                        className="cursor-pointer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleTagClick(tag);
-                        }}
-                      >
-                        {tag}
+          
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <h2 className="text-xl font-semibold mb-2">No articles found</h2>
+              <p className="text-muted-foreground mb-4">
+                Try adjusting your search or filter to find what you're looking for.
+              </p>
+              <Button onClick={() => { setSearchTerm(""); setSelectedTag(null); }}>
+                Clear filters
+              </Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPosts.map((post) => (
+                <Card key={post.id} className="overflow-hidden card-hover">
+                  <div className="aspect-video relative overflow-hidden">
+                    <img 
+                      src={post.coverImage} 
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    />
+                    <div className="absolute top-2 right-2">
+                      <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+                        {post.date}
                       </Badge>
-                    ))}
+                    </div>
                   </div>
-                </CardContent>
-                
-                <CardFooter>
-                  <Button variant="ghost" className="w-full justify-between group" asChild>
-                    <Link to={`/blog/${post.slug}`}>
-                      Read Article
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        )}
+                  
+                  <CardHeader>
+                    <CardTitle>{post.title}</CardTitle>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <Badge 
+                          key={tag} 
+                          variant="outline"
+                          className="cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTagClick(tag);
+                          }}
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  
+                  <CardFooter>
+                    <Button variant="ghost" className="w-full justify-between group" asChild>
+                      <Link to={`/blog/${post.slug}`}>
+                        Read Article
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

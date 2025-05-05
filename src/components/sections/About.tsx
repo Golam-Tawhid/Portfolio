@@ -62,11 +62,11 @@ const About = () => {
               <a href="mailto:tawhidfahad199@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
                 <Mail className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" />
               </a>
-              <a href="tel:+8801703045450" target="_blank" rel="noopener noreferrer" aria-label="Phone">
+              {/* <a href="tel:+8801703045450" target="_blank" rel="noopener noreferrer" aria-label="Phone">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h2l3.6 7.59-1.35 2.44a11.05 11.05 0 005.11 5.11l2.44-1.35L19 19v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
                 </svg>
-              </a>
+              </a> */}
               <a href="https://github.com/Golam-Tawhid" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Github className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" />
               </a>

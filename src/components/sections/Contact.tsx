@@ -52,12 +52,12 @@ const Contact = () => {
       value: "tawhidfahad199@gmail.com",
       href: "mailto:tawhidfahad199@gmail.com",
     },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+8801703045450",
-      href: "tel:+8801703045450",
-    },
+    // {
+    //   icon: Phone,
+    //   title: "Phone",
+    //   value: "+8801703045450",
+    //   href: "tel:+8801703045450",
+    // },
     {
       icon: MapPin,
       title: "Location",
@@ -172,11 +172,11 @@ const Contact = () => {
             </div>
 
             <div className="mt-8 p-4 bg-secondary rounded-md">
-              <h3 className="text-lg font-semibold mb-2">Office Hours</h3>
+              <h3 className="text-lg font-semibold mb-2">Busy Hours</h3>
               <ul className="space-y-1 text-muted-foreground">
-                <li>Monday - Friday: 9am - 5pm</li>
-                <li>Saturday: By appointment</li>
-                <li>Sunday: Closed</li>
+                <li>Sunday - Thursday: 9am - 5pm</li>
+                {/* <li>Saturday: By appointment</li> */}
+                {/* <li>Sunday: Closed</li> */}
               </ul>
             </div>
           </div>

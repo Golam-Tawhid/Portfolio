@@ -6,8 +6,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
-    { name: "GitHub", icon: Github, href: "https://github.com" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
+    { name: "GitHub", icon: Github, href: "https://github.com/Golam-Tawhid" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/g-t-fahad" },
     { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
     { name: "Email", icon: Mail, href: "mailto:contact@example.com" },
   ];
@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="container-wide">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4 gradient-text">Jane Doe</h3>
+            <h3 className="text-xl font-bold mb-4 gradient-text">Golam Tawhid</h3>
             <p className="text-muted-foreground">
               Passionate software developer creating elegant solutions to complex problems.
             </p>
@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; {currentYear} Jane Doe. All rights reserved.</p>
+          <p>&copy; {currentYear} Golam Tawhid. All rights reserved.</p>
         </div>
       </div>
     </footer>
