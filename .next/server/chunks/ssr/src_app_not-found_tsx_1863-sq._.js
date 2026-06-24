@@ -1,3 +1,0 @@
-module.exports=[3363,a=>{"use strict";var b=a.i(7997),c=a.i(95936),d=a.i(38904);a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"flex min-h-screen flex-col items-center justify-center bg-background px-6",children:[(0,b.jsx)("h1",{className:"font-heading text-6xl font-bold gradient-text",children:"404"}),(0,b.jsx)("p",{className:"mt-4 text-xl text-muted-foreground",children:"Page not found"}),(0,b.jsx)(d.Button,{asChild:!0,className:"mt-8",children:(0,b.jsx)(c.default,{href:"/",children:"Return to Home"})})]})}])},17537,a=>{a.n(a.i(3363))}];
-
-//# sourceMappingURL=src_app_not-found_tsx_1863-sq._.js.map
