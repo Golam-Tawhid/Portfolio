@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#111"/>
+  <circle cx="400" cy="200" r="80" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="400" y="330" fill="#e5e5e5" font-family="system-ui,sans-serif" font-size="28" text-anchor="middle" font-weight="600">ClassTablet</text>
+</svg>

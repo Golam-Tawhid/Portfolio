@@ -1,63 +1,135 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { StaggerContainer, StaggerItem } from "@/components/motion/StaggerContainer";
+import { profile } from "@/lib/data/profile";
 
-const Hero = () => {
+function HeroVisual() {
+  const [spotlight, setSpotlight] = useState({ x: 50, y: 50 });
+
   return (
-    <section id="home" className="min-h-screen flex items-center section">
-      <div className="container-wide">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6 animate-slide-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Hello, I'm{" "}
-              <span className="gradient-text">Md Golam Tawhid Fahad</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              Final-year Computer Science student at BRAC University passionate
-              about Web Development, AI, and Machine Learning.
-            </p>
-            <p className="text-base md:text-lg max-w-md">
-              I craft scalable web applications using Django, Flask, and React,
-              and develop machine learning models with TensorFlow and OpenCV. I
-              enjoy solving complex problems with creativity and technical
-              depth.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button className="group" asChild>
-                <a href="#projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a href="#contact">Get In Touch</a>
-              </Button>
-            </div>
-          </div>
+    <div
+      className="hero-photo-frame hero-photo-rim relative aspect-[4/5] w-full max-w-md"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setSpotlight({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(circle at ${spotlight.x}% ${spotlight.y}%, hsl(var(--primary) / 0.18), transparent 55%)`,
+        }}
+      />
+      <Image
+        src="/profile.png"
+        alt={profile.fullName}
+        fill
+        priority
+        className="object-cover object-top"
+        sizes="(max-width: 768px) 100vw, 400px"
+      />
+    </div>
+  );
+}
 
-          <div className="relative hidden md:block">
-            <div className="w-72 h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-2xl absolute -z-10 animate-pulse-slow"></div>
-            <div className="w-full aspect-square rounded-3xl overflow-hidden animate-fade-in">
-              <img
-                src="/gtf.png"
-                alt="Md Golam Tawhid Fahad"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
+function RoleTyping() {
+  const roles = profile.roles;
+  const [index, setIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center animate-fade-in">
-          <span className="text-sm text-muted-foreground mb-2">
-            Scroll to explore
-          </span>
-          <div className="w-5 h-9 border-2 border-muted-foreground rounded-full flex justify-center">
-            <div className="w-1 h-2 bg-muted-foreground rounded-full mt-2 animate-bounce"></div>
-          </div>
+  useEffect(() => {
+    const current = roles[index];
+    const timeout = setTimeout(
+      () => {
+        if (!deleting) {
+          if (text.length < current.length) {
+            setText(current.slice(0, text.length + 1));
+          } else {
+            setTimeout(() => setDeleting(true), 2000);
+          }
+        } else if (text.length > 0) {
+          setText(text.slice(0, -1));
+        } else {
+          setDeleting(false);
+          setIndex((i) => (i + 1) % roles.length);
+        }
+      },
+      deleting ? 40 : 60
+    );
+    return () => clearTimeout(timeout);
+  }, [text, deleting, index, roles]);
+
+  return (
+    <span className="font-mono text-primary" aria-live="polite">
+      {text}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+}
+
+export default function Hero() {
+  return (
+    <section
+      id="home"
+      className="flex min-h-screen items-center pb-16 pt-28 md:pt-32"
+    >
+      <div className="container-site">
+        <div className="grid grid-cols-1 items-center gap-12 xl:grid-cols-2">
+          <StaggerContainer className="flex flex-col gap-6">
+            <StaggerItem>
+              <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+                {profile.headline}
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <h1 className="font-heading text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.05] tracking-tight">
+                {profile.name}
+              </h1>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="min-h-[2rem] text-lg text-muted-foreground md:text-xl">
+                <RoleTyping />
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="max-w-xl text-lg text-foreground/80">
+                {profile.tagline}
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="group">
+                  <Link href="#projects">
+                    View Projects
+                    <ArrowRight
+                      data-icon="inline-end"
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="#contact">Get In Touch</Link>
+                </Button>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+
+          <StaggerContainer className="flex justify-center xl:justify-end">
+            <StaggerItem className="w-full max-w-md">
+              <HeroVisual />
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { SectionShell } from "@/components/layout/SectionShell";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,11 +15,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { toast } from "sonner";
+import { profile } from "@/lib/data/profile";
 
-const Contact = () => {
-  const { toast } = useToast();
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,157 +37,186 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+      toast.success("Message sent!", {
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
       setIsSubmitting(false);
-    }, 1000);
+    }, 800);
   };
 
-  const contactInfo = [
+  const links = [
     {
       icon: Mail,
-      title: "Email",
-      value: "tawhidfahad199@gmail.com",
-      href: "mailto:tawhidfahad199@gmail.com",
+      label: "Email",
+      href: profile.social.email,
+      text: profile.email,
     },
-    // {
-    //   icon: Phone,
-    //   title: "Phone",
-    //   value: "+8801703045450",
-    //   href: "tel:+8801703045450",
-    // },
+    {
+      icon: Phone,
+      label: "Phone",
+      href: `tel:${profile.phone.replace(/\s/g, "")}`,
+      text: profile.phone,
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: profile.social.linkedin,
+      text: "linkedin.com/in/g-t-fahad",
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      href: profile.social.github,
+      text: "github.com/Golam-Tawhid",
+    },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Badda, Dhaka, Bangladesh",
-      href: "https://maps.google.com/?q=Badda,+Dhaka,+Bangladesh",
+      label: "Location",
+      href: `https://maps.google.com/?q=${encodeURIComponent(profile.location)}`,
+      text: profile.location,
     },
   ];
 
   return (
-    <section id="contact" className="section">
-      <div className="container-wide">
-        <h2 className="section-heading">Get In Touch</h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Send Me a Message</CardTitle>
-                <CardDescription>
-                  Have a question or want to work together? Fill out the form
-                  below and I'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <form onSubmit={handleSubmit}>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Your email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      placeholder="Message subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="Your message"
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button type="submit" disabled={isSubmitting} className="w-full">
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </CardFooter>
-              </form>
-            </Card>
-          </div>
-
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold">Contact Information</h3>
-            <div className="space-y-4">
-              {contactInfo.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-start p-4 rounded-md bg-secondary hover:bg-secondary/80 transition-colors"
-                >
-                  <div className="mr-3 bg-primary/10 p-2 rounded-full text-primary">
-                    <item.icon size={24} />
-                  </div>
-                  <div>
-                    <p className="font-medium">{item.title}</p>
-                    <p className="text-muted-foreground">{item.value}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="mt-8 p-4 bg-secondary rounded-md">
-              <h3 className="text-lg font-semibold mb-2">Busy Hours</h3>
-              <ul className="space-y-1 text-muted-foreground">
-                <li>Sunday - Thursday: 9am - 5pm</li>
-                {/* <li>Saturday: By appointment</li> */}
-                {/* <li>Sunday: Closed</li> */}
-              </ul>
-            </div>
+    <SectionShell
+      id="contact"
+      title="Contact"
+      className="bg-secondary/20"
+    >
+      <ScrollReveal>
+        <div className="mb-12 text-center">
+          <p className="font-heading text-2xl font-semibold md:text-3xl">
+            Let&apos;s build something{" "}
+            <span className="gradient-text">meaningful</span> together.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <Button size="lg" asChild>
+              <a href={profile.social.email}>
+                <Mail data-icon="inline-start" />
+                Email Me
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">
+                <Linkedin data-icon="inline-start" />
+                LinkedIn
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href={profile.social.github} target="_blank" rel="noopener noreferrer">
+                <Github data-icon="inline-start" />
+                GitHub
+              </a>
+            </Button>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </ScrollReveal>
 
-export default Contact;
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <Card className="border-white/5 bg-card/80">
+            <CardHeader>
+              <CardTitle>Send a Message</CardTitle>
+              <CardDescription>
+                Have a project in mind or want to collaborate? Drop a message.
+              </CardDescription>
+            </CardHeader>
+            <form onSubmit={handleSubmit}>
+              <CardContent className="flex flex-col gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="name" className="text-sm font-medium">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-sm font-medium">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="subject" className="text-sm font-medium">
+                    Subject
+                  </label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    placeholder="What's this about?"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    aria-required="true"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="message" className="text-sm font-medium">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    aria-required="true"
+                  />
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit" disabled={isSubmitting} className="w-full">
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </CardFooter>
+            </form>
+          </Card>
+        </div>
+
+        <ScrollReveal delay={0.1}>
+          <div className="flex flex-col gap-4">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.label === "Email" ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 rounded-xl border border-white/5 bg-card/50 p-4 transition-colors hover:border-primary/20 focus-ring"
+              >
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <link.icon />
+                </div>
+                <div>
+                  <p className="font-medium">{link.label}</p>
+                  <p className="text-sm text-muted-foreground">{link.text}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </ScrollReveal>
+      </div>
+    </SectionShell>
+  );
+}

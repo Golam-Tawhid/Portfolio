@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, X, Moon, Sun } from "lucide-react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/hooks/use-theme";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
   { name: "Research", href: "#research" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
@@ -19,29 +27,32 @@ interface NavbarProps {
   showOnlyBackToPortfolioButton?: boolean;
 }
 
-const Navbar = ({
+export default function Navbar({
   showBackToPortfolioButton = false,
   showOnlyBackToPortfolioButton = false,
-}: NavbarProps) => {
-  const isMobile = useIsMobile();
-  const { theme, setTheme } = useTheme();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+}: NavbarProps) {
   const [activeSection, setActiveSection] = useState("home");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [compact, setCompact] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update navbar style on scroll
-      setIsScrolled(window.scrollY > 10);
+      const currentY = window.scrollY;
+      if (currentY > 80) {
+        setCompact(currentY > lastScrollY.current);
+      } else {
+        setCompact(false);
+      }
+      lastScrollY.current = currentY;
 
-      // Update active section based on scroll position
       const sections = document.querySelectorAll("section[id]");
-      const scrollPosition = window.scrollY + 80;
+      const scrollPosition = currentY + 100;
 
       sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionHeight = (section as HTMLElement).offsetHeight;
-        const sectionId = section.getAttribute("id") || "";
+        const el = section as HTMLElement;
+        const sectionTop = el.offsetTop;
+        const sectionHeight = el.offsetHeight;
+        const sectionId = el.getAttribute("id") || "";
 
         if (
           scrollPosition >= sectionTop &&
@@ -52,119 +63,108 @@ const Navbar = ({
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+  const navLinks = (
+    <>
+      {!showOnlyBackToPortfolioButton &&
+        NAV_ITEMS.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            className={cn(
+              "nav-link text-sm",
+              activeSection === item.href.slice(1) && "active"
+            )}
+          >
+            {item.name}
+          </a>
+        ))}
+      {showBackToPortfolioButton && (
+        <Button variant="outline" size="sm" asChild>
+          <Link href="/">Back to Portfolio</Link>
+        </Button>
+      )}
+    </>
+  );
 
   return (
-    <header
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container-wide flex items-center justify-between py-4">
-        <a href="#home" className="text-xl md:text-2xl font-bold gradient-text">
-          Golam Tawhid
-        </a>
+    <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
+        Skip to main content
+      </a>
+      <header
+        className={cn(
+          "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
+          compact ? "py-2" : "py-4"
+        )}
+      >
+        <div
+          className={cn(
+            "container-site glass-panel rounded-2xl transition-all duration-300",
+            compact ? "py-2 shadow-lg" : "py-3"
+          )}
+        >
+          <div className="flex items-center justify-between gap-4">
+            <Link
+              href="/#home"
+              className="font-heading text-lg font-bold gradient-text md:text-xl focus-ring rounded-sm"
+            >
+              G.T. Fahad
+            </Link>
 
-        {isMobile ? (
-          <>
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="rounded-full"
-              >
-                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-foreground"
-                onClick={toggleMenu}
-              >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </Button>
-            </div>
+            <nav
+              aria-label="Primary"
+              className="hidden items-center gap-6 lg:flex"
+            >
+              {navLinks}
+            </nav>
 
-            {isMenuOpen && (
-              <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-md z-40 animate-fade-in">
-                <nav className="flex flex-col items-center justify-center h-full">
+            <Sheet>
+              <SheetTrigger asChild className="lg:hidden">
+                <Button variant="ghost" size="icon" aria-label="Open menu">
+                  <Menu />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="glass-panel border-white/5">
+                <SheetHeader>
+                  <SheetTitle className="font-heading gradient-text">
+                    Navigation
+                  </SheetTitle>
+                </SheetHeader>
+                <nav
+                  aria-label="Mobile primary"
+                  className="mt-8 flex flex-col gap-4"
+                >
                   {!showOnlyBackToPortfolioButton &&
                     NAV_ITEMS.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className={`nav-link text-2xl my-4 ${
-                          activeSection === item.href.slice(1) ? "active" : ""
-                        }`}
-                        onClick={closeMenu}
+                        className={cn(
+                          "nav-link text-lg",
+                          activeSection === item.href.slice(1) && "active"
+                        )}
                       >
                         {item.name}
                       </a>
                     ))}
                   {showBackToPortfolioButton && (
-                    <a
-                      href="/"
-                      className="nav-link text-2xl my-4"
-                      onClick={closeMenu}
-                    >
-                      Back to Portfolio
-                    </a>
+                    <Button variant="outline" asChild>
+                      <Link href="/">Back to Portfolio</Link>
+                    </Button>
                   )}
                 </nav>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="flex items-center gap-8">
-            <nav className="flex items-center gap-6">
-              {!showOnlyBackToPortfolioButton &&
-                NAV_ITEMS.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`nav-link ${
-                      activeSection === item.href.slice(1) ? "active" : ""
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-            </nav>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
-            {showBackToPortfolioButton && (
-              <Button variant="outline" asChild className="ml-4">
-                <a href="/">Back to Portfolio</a>
-              </Button>
-            )}
+              </SheetContent>
+            </Sheet>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      </header>
+    </>
   );
-};
-
-export default Navbar;
+}
