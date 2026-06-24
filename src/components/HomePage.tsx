@@ -1,18 +1,29 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Experience from "@/components/sections/Experience";
-import Projects from "@/components/sections/Projects";
-import Research from "@/components/sections/Research";
-import Skills from "@/components/sections/Skills";
-import Achievements from "@/components/sections/Achievements";
-import Blog from "@/components/sections/Blog";
 import Contact from "@/components/sections/Contact";
-import { BackgroundCanvas } from "@/components/effects/BackgroundCanvas";
-import { CustomCursor } from "@/components/effects/CustomCursor";
+
+const BackgroundCanvas = dynamic(
+  () =>
+    import("@/components/effects/BackgroundCanvas").then((m) => m.BackgroundCanvas),
+  { ssr: false }
+);
+
+const CustomCursor = dynamic(
+  () => import("@/components/effects/CustomCursor").then((m) => m.CustomCursor),
+  { ssr: false }
+);
+
+const About = dynamic(() => import("@/components/sections/About"));
+const Experience = dynamic(() => import("@/components/sections/Experience"));
+const Projects = dynamic(() => import("@/components/sections/Projects"));
+const Research = dynamic(() => import("@/components/sections/Research"));
+const Skills = dynamic(() => import("@/components/sections/Skills"));
+const Achievements = dynamic(() => import("@/components/sections/Achievements"));
+const Blog = dynamic(() => import("@/components/sections/Blog"));
 
 export default function HomePage() {
   return (

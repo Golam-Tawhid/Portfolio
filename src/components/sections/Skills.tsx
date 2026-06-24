@@ -48,8 +48,8 @@ export default function Skills() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveId(category.id)}
-                  className={cn(
-                    "absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300 focus-ring md:text-sm",
+                    className={cn(
+                      "absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 focus-ring md:min-h-11 md:min-w-11 md:text-sm",
                     isActive
                       ? "border-primary bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.4)]"
                       : "border-white/10 bg-background/80 text-foreground/80 hover:border-primary/30"

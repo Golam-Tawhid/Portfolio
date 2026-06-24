@@ -71,6 +71,10 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/profile.png" as="image" type="image/png" />
+      </head>
       <body className="min-h-screen antialiased">
         <JsonLd />
         <Providers>{children}</Providers>

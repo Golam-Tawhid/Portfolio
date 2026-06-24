@@ -1,29 +1,34 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import { revealTransition } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-interface ScrollRevealProps extends HTMLMotionProps<"div"> {
+type ScrollRevealElement = "div" | "li" | "section";
+
+interface ScrollRevealProps {
   delay?: number;
+  as?: ScrollRevealElement;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export function ScrollReveal({
+  as = "div",
   children,
   className,
   delay = 0,
-  ...props
 }: ScrollRevealProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ ...revealTransition, delay }}
-      className={cn(className)}
-      {...props}
-    >
-      {children}
-    </motion.div>
-  );
+  const motionProps = {
+    initial: { opacity: 0, y: 32 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { ...revealTransition, delay },
+    className: cn(className),
+    children,
+  };
+
+  if (as === "li") return <motion.li {...motionProps} />;
+  if (as === "section") return <motion.section {...motionProps} />;
+  return <motion.div {...motionProps} />;
 }

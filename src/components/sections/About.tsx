@@ -34,20 +34,23 @@ export default function About() {
           />
           <ol className="flex flex-col gap-8">
             {aboutTimeline.map((milestone, index) => (
-              <ScrollReveal key={milestone.title} delay={index * 0.08}>
-                <li className="relative pl-10 md:pl-14">
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-2.5 top-1.5 size-3 rounded-full border-2 border-primary bg-background md:left-4"
-                  />
-                  <p className="font-mono text-sm text-primary">{milestone.year}</p>
-                  <h3 className="mt-1 font-heading text-xl font-semibold">
-                    {milestone.title}
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    {milestone.description}
-                  </p>
-                </li>
+              <ScrollReveal
+                as="li"
+                key={milestone.title}
+                delay={index * 0.08}
+                className="relative pl-10 md:pl-14"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute left-2.5 top-1.5 size-3 rounded-full border-2 border-primary bg-background md:left-4"
+                />
+                <p className="font-mono text-sm text-primary">{milestone.year}</p>
+                <h3 className="mt-1 font-heading text-xl font-semibold">
+                  {milestone.title}
+                </h3>
+                <p className="mt-2 text-muted-foreground">
+                  {milestone.description}
+                </p>
               </ScrollReveal>
             ))}
           </ol>

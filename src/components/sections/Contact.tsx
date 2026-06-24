@@ -34,16 +34,37 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = (await response.json()) as { error?: string; success?: boolean };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Failed to send message");
+      }
+
       toast.success("Message sent!", {
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      toast.error("Could not send message", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please try again or email directly.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 800);
+    }
   };
 
   const links = [

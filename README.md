@@ -61,4 +61,22 @@ Interests span **visual speech recognition**, **self-supervised learning**, **co
 
 ---
 
+## Contact form setup
+
+Copy `.env.example` to `.env.local` and add a [Resend](https://resend.com) API key:
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Description |
+|----------|-------------|
+| `RESEND_API_KEY` | Resend API key |
+| `CONTACT_TO_EMAIL` | Inbox for submissions (defaults to profile email) |
+| `CONTACT_FROM_EMAIL` | Verified sender in Resend |
+
+Form POSTs to `/api/contact` and emails you with the visitor's address as reply-to.
+
+---
+
 Built with Next.js, TypeScript, Tailwind CSS, shadcn/ui, and Framer Motion.

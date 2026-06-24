@@ -42,11 +42,10 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+        hidden: { opacity: 0, y: 24 },
         visible: {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           transition: springSmooth,
         },
       }}

@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { BackgroundCanvas } from "@/components/effects/BackgroundCanvas";
-import { TiltCard } from "@/components/motion/TiltCard";
+const TiltCard = dynamic(
+  () => import("@/components/motion/TiltCard").then((m) => m.TiltCard),
+  { ssr: false }
+);
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,9 +18,14 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { blogPosts, getAllTags } from "@/lib/data/blog";
+
+const BackgroundCanvas = dynamic(
+  () =>
+    import("@/components/effects/BackgroundCanvas").then((m) => m.BackgroundCanvas),
+  { ssr: false }
+);
 
 export default function BlogListPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,6 +49,7 @@ export default function BlogListPage() {
         <div className="container-site py-10">
           <header className="mb-8 text-center">
             <h1 className="section-heading mb-4">Blog</h1>
+            <h2 className="sr-only">All articles</h2>
             <p className="mx-auto max-w-xl text-muted-foreground">
               Thoughts, tutorials, and insights about web development, AI, and
               technology.
@@ -112,13 +121,16 @@ export default function BlogListPage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={75}
                     />
                     <Badge className="absolute right-2 top-2 bg-background/80 backdrop-blur-sm">
                       {post.date}
                     </Badge>
                   </div>
                   <CardHeader>
-                    <CardTitle className="line-clamp-2">{post.title}</CardTitle>
+                    <h2 className="line-clamp-2 text-lg font-semibold leading-none tracking-tight">
+                      {post.title}
+                    </h2>
                   </CardHeader>
                   <CardContent>
                     <p className="mb-4 line-clamp-3 text-sm text-muted-foreground">
@@ -126,16 +138,18 @@ export default function BlogListPage() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
-                        <Badge
+                        <Button
                           key={tag}
+                          type="button"
                           variant="outline"
-                          className="cursor-pointer"
+                          size="sm"
+                          className="h-auto rounded-full px-2.5 py-0.5 text-xs font-semibold"
                           onClick={() =>
                             setSelectedTag(selectedTag === tag ? null : tag)
                           }
                         >
                           {tag}
-                        </Badge>
+                        </Button>
                       ))}
                     </div>
                   </CardContent>

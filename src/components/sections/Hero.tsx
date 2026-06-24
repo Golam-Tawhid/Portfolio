@@ -33,6 +33,7 @@ function HeroVisual() {
         alt={profile.fullName}
         fill
         priority
+        quality={85}
         className="object-cover object-top"
         sizes="(max-width: 768px) 100vw, 400px"
       />

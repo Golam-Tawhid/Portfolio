@@ -17,6 +17,7 @@ out
 # Environment variables
 .env
 .env*.local
+lighthouse-*.json
 
 # Vercel
 .vercel

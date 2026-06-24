@@ -56,7 +56,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.name}
-                  className="flex size-10 items-center justify-center rounded-full border border-white/5 bg-background transition-colors hover:border-primary/30 hover:bg-primary/10 focus-ring"
+                  className="flex size-11 items-center justify-center rounded-full border border-white/5 bg-background transition-colors hover:border-primary/30 hover:bg-primary/10 focus-ring"
                 >
                   <link.icon />
                 </a>

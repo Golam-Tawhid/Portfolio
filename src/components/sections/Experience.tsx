@@ -24,54 +24,55 @@ export default function Experience() {
           {experiences.map((exp, index) => {
             const isActive = activeIndex === index;
             return (
-              <ScrollReveal key={exp.organization} delay={index * 0.06}>
-                <li>
-                  <button
-                    type="button"
-                    onMouseEnter={() => setActiveIndex(index)}
-                    onFocus={() => setActiveIndex(index)}
-                    onClick={() =>
-                      setActiveIndex(isActive ? null : index)
-                    }
-                    aria-expanded={isActive}
+              <ScrollReveal as="li" key={exp.organization} delay={index * 0.06}>
+                  <div
                     className={cn(
-                      "relative w-full rounded-xl border p-6 pl-10 text-left transition-all duration-300 focus-ring md:pl-12",
+                      "relative rounded-xl border transition-all duration-300",
                       isActive
                         ? "border-primary/40 bg-card shadow-[0_0_30px_-10px_hsl(var(--primary)/0.3)]"
                         : "border-white/5 bg-card/50 hover:border-white/10"
                     )}
                   >
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "absolute left-3 top-8 size-4 rounded-full border-2 transition-colors md:left-4",
-                        isActive
-                          ? "border-primary bg-primary"
-                          : "border-muted-foreground bg-background"
-                      )}
-                    />
-                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                      <h3 className="font-heading text-lg font-semibold">
-                        {exp.role}
-                      </h3>
-                      <span className="font-mono text-sm text-primary">
-                        {exp.duration}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm font-medium text-muted-foreground">
-                      {exp.organization}
-                      {exp.location ? ` · ${exp.location}` : ""}
-                    </p>
-                    <p
-                      className={cn(
-                        "mt-3 text-muted-foreground transition-all duration-300",
-                        isActive ? "opacity-100" : "line-clamp-2 opacity-80"
-                      )}
+                    <button
+                      type="button"
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onFocus={() => setActiveIndex(index)}
+                      onClick={() => setActiveIndex(isActive ? null : index)}
+                      aria-expanded={isActive}
+                      className="relative w-full p-6 pl-10 text-left focus-ring md:pl-12"
                     >
-                      {exp.description}
-                    </p>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "absolute left-3 top-8 size-4 rounded-full border-2 transition-colors md:left-4",
+                          isActive
+                            ? "border-primary bg-primary"
+                            : "border-muted-foreground bg-background"
+                        )}
+                      />
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                        <h3 className="font-heading text-lg font-semibold">
+                          {exp.role}
+                        </h3>
+                        <span className="font-mono text-sm text-primary">
+                          {exp.duration}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm font-medium text-muted-foreground">
+                        {exp.organization}
+                        {exp.location ? ` · ${exp.location}` : ""}
+                      </p>
+                      <p
+                        className={cn(
+                          "mt-3 text-muted-foreground transition-all duration-300",
+                          isActive ? "opacity-100" : "line-clamp-2 opacity-80"
+                        )}
+                      >
+                        {exp.description}
+                      </p>
+                    </button>
                     {isActive && (
-                      <ul className="mt-4 flex flex-col gap-2 border-t border-white/5 pt-4">
+                      <ul className="flex flex-col gap-2 border-t border-white/5 px-6 pb-6 pl-10 md:pl-12">
                         {exp.highlights.map((item) => (
                           <li
                             key={item}
@@ -82,9 +83,8 @@ export default function Experience() {
                         ))}
                       </ul>
                     )}
-                  </button>
-                </li>
-              </ScrollReveal>
+                  </div>
+                </ScrollReveal>
             );
           })}
         </ol>
