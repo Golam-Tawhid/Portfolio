@@ -9,6 +9,13 @@ import { BackgroundCanvas } from "@/components/effects/BackgroundCanvas";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getBlogPost } from "@/lib/data/blog";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildBlogPostingSchema,
+  buildBreadcrumbSchema,
+} from "@/lib/seo/schema";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { absoluteUrl } from "@/lib/site";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -25,15 +32,13 @@ export async function generateMetadata({
   const post = getBlogPost(slug);
   if (!post) return { title: "Article Not Found" };
 
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [post.coverImage],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    keywords: post.tags,
+    ogImage: post.coverImage,
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -44,6 +49,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <JsonLd data={buildBlogPostingSchema(post)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <BackgroundCanvas />
       <Navbar showBackToPortfolioButton showOnlyBackToPortfolioButton />
       <main id="main" className="min-h-screen pb-16 pt-28">
@@ -72,9 +85,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.title}
               </h1>
               <div className="mt-4 flex flex-wrap items-center gap-4">
-                <span className="text-muted-foreground">By {post.author}</span>
+                <span className="text-muted-foreground">
+                  By{" "}
+                  <a
+                    href={absoluteUrl("/")}
+                    rel="author"
+                    className="text-primary hover:underline"
+                  >
+                    {post.author}
+                  </a>
+                </span>
                 <span className="text-muted-foreground">·</span>
-                <time dateTime={post.date} className="text-muted-foreground">
+                <time
+                  dateTime={post.publishedAt ?? post.date}
+                  className="text-muted-foreground"
+                >
                   {post.date}
                 </time>
                 <div className="flex flex-wrap gap-2">

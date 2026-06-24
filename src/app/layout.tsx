@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import { defaultMetadata } from "@/lib/seo/metadata";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { Providers } from "@/components/Providers";
-import { JsonLd } from "@/components/JsonLd";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,43 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "G.T. Fahad — Founding Engineer & Software Engineer",
-    template: "%s | G.T. Fahad",
-  },
-  description:
-    "Portfolio of G.T. Fahad — Founding Engineer at ClassTablet, Junior Software Engineer at Nyntax, CS Graduate @ BRAC University. Full-stack, computer vision, and ML.",
-  keywords: [
-    "G.T. Fahad",
-    "Software Engineer",
-    "Full-Stack",
-    "ClassTablet",
-    "Nyntax",
-    "Computer Vision",
-    "Machine Learning",
-    "BRAC University",
-  ],
-  authors: [{ name: "G.T. Fahad" }],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    title: "G.T. Fahad — Software Engineer & AI/ML Researcher",
-    description:
-      "Building impactful products, intelligent systems, and research-driven solutions.",
-    siteName: "G.T. Fahad Portfolio",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "G.T. Fahad — Software Engineer & AI/ML Researcher",
-    description:
-      "Building impactful products, intelligent systems, and research-driven solutions.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export const metadata = defaultMetadata;
 
 export default function RootLayout({
   children,
@@ -74,9 +39,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preload" href="/profile.png" as="image" type="image/png" />
+        <link rel="author" href={absoluteUrl("/llms-full.txt")} />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full profile" />
+        <link rel="author" type="text/plain" href="/humans.txt" />
       </head>
       <body className="min-h-screen antialiased">
-        <JsonLd />
+        <StructuredData />
         <Providers>{children}</Providers>
       </body>
     </html>

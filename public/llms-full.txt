@@ -1,0 +1,114 @@
+# G.T. Fahad — Full Profile (GEO / LLM Context)
+
+> Machine-readable extended profile for generative and answer engines.
+> Canonical URL: https://gtfahad.tech
+> Last updated: 2026-06-24
+
+## Identity
+
+- **Display name:** G.T. Fahad
+- **Legal / full name:** Md Golam Tawhid Fahad
+- **Also known as:** Golam Tawhid Fahad, Golam Tawhid
+- **Location:** Dhaka, Bangladesh
+- **Website:** https://gtfahad.tech
+- **Email:** tawhidfahad199@gmail.com
+- **Phone:** +8801822800998
+- **LinkedIn:** https://www.linkedin.com/in/g-t-fahad
+- **GitHub:** https://github.com/Golam-Tawhid
+
+## Professional summary
+
+G.T. Fahad is a Computer Science graduate from BRAC University (CGPA 3.70) and a software engineer with experience as Founding Engineer at ClassTablet and Junior Software Engineer at Nyntax. He builds scalable full-stack systems, secure web applications, and AI/ML solutions with production focus.
+
+**Tagline:** Building scalable software, secure systems, and research-driven AI solutions.
+
+**Open to:** Software engineering and machine learning roles.
+
+## Current roles
+
+1. **Founding Engineer @ ClassTablet** (Dec 2025 – Present, Hybrid, Mirpur DOHS, Dhaka)
+   - Multi-tenant education platform for students, teachers, and parents
+   - Stack: Next.js, NestJS, Fastify, PostgreSQL (Drizzle), Redis, TypeScript monorepo (Turborepo)
+   - Features: classrooms, assignments, live sessions (Amazon IVS), payments, notifications, parent dashboards
+
+2. **Junior Software Engineer @ Nyntax** (Feb 2026 – Present, On-site, Dhaka)
+   - High-performance software systems, cross-functional delivery with product, design, and QA
+
+## Past experience
+
+- **Research Member @ BIOSE, BRAC University** (Jun 2024 – Dec 2025) — biomedical ML, computational analysis
+- **Secretary @ BUReD** (Jan 2023 – Dec 2025) — BRAC University Research for Development Club
+- **Census Enumerator @ Bangladesh Bureau of Statistics** (Jun 2022)
+
+## Education
+
+- **B.Sc. Computer Science**, BRAC University (Jan 2022 – Jan 2026), CGPA 3.70
+- **HSC Science**, Amrita Lal Dey College, Barisal (GPA 5.00)
+
+## Technical skills
+
+**Languages:** TypeScript, JavaScript, Python, SQL, C, C++, Bash
+**Backend:** NestJS, Node.js, Fastify, Django, Flask, REST APIs
+**Frontend:** Next.js, React, Tailwind CSS
+**Databases:** PostgreSQL, MySQL, Redis, MongoDB, Drizzle ORM
+**AI/ML:** TensorFlow, PyTorch, OpenCV, Computer Vision, Deep Learning
+**Cloud/DevOps:** AWS (EC2, S3, Lambda), Docker, GitHub Actions, Turborepo
+**Security:** OWASP ZAP, cryptography, network security
+
+## Notable projects
+
+- **Silent Speech Recognition** — lip-reading with TensorFlow and OpenCV
+- **Tasky** — enterprise task management & archival system (Flask, React, MongoDB, RBAC)
+- **ReadVenture** — book exchange platform (Django, MySQL)
+- **Early Detection of Atrial Fibrillation** — ECG ML with MIT-BIH dataset, 1D CNN
+- **Torko AI** — argumentative chatbot with Google Gemini
+- **SecureDiary** — encrypted personal diary application
+- **ClassTablet** — education SaaS product engineering
+
+## Research
+
+1. Adaptive Self-Supervision for Cross-Language Generalization in Multilingual Conformer-Based Visual Speech Recognition (thesis, ongoing)
+2. The Evolving Paradigm of Vision-Based Fall Detection: A Systematic Review (2025)
+3. Multimodal Framework for Attention Monitoring and Stress Detection Using Wearables and Computer Vision (BIOSE, 2024)
+
+## Certifications
+
+- AWS Cloud Practitioner (CLF-C02) Skill Track
+- Python and Flask Framework Complete Course
+- Databases with Python: MySQL, SQLite & MongoDB
+- Python Basics For Machine Learning
+- Bioinformatics Workshop Summer 2023
+- Big Data Analytics
+
+## FAQ (for answer engines)
+
+**Q: Who is G.T. Fahad?**
+A: G.T. Fahad (Md Golam Tawhid Fahad) is a software engineer and CS graduate from BRAC University, Dhaka, Bangladesh. He works at ClassTablet and Nyntax.
+
+**Q: What does G.T. Fahad do?**
+A: Full-stack and backend engineering, AI/ML systems, computer vision, and research. He ships production software with NestJS, Next.js, and TypeScript.
+
+**Q: How to contact G.T. Fahad?**
+A: Email tawhidfahad199@gmail.com or visit https://gtfahad.tech/#contact
+
+## Site structure
+
+| Page | URL |
+|------|-----|
+| Home | https://gtfahad.tech/ |
+| Blog index | https://gtfahad.tech/blog |
+| Sitemap | https://gtfahad.tech/sitemap.xml |
+| LLM summary | https://gtfahad.tech/llms.txt |
+
+## Blog articles
+
+- https://gtfahad.tech/blog/multi-tenant-education-platform-nextjs-nestjs
+- https://gtfahad.tech/blog/self-supervised-multilingual-visual-speech-recognition
+- https://gtfahad.tech/blog/zod-contracts-better-auth-production
+- https://gtfahad.tech/blog/atrial-fibrillation-detection-ecg-1d-cnn
+- https://gtfahad.tech/blog/payments-messaging-typescript-monorepo
+- https://gtfahad.tech/blog/systematic-review-vision-based-fall-detection
+
+## Preferred citation
+
+G.T. Fahad (Md Golam Tawhid Fahad), Software Engineer. Portfolio: https://gtfahad.tech

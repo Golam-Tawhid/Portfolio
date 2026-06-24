@@ -24,6 +24,7 @@ const Research = dynamic(() => import("@/components/sections/Research"));
 const Skills = dynamic(() => import("@/components/sections/Skills"));
 const Achievements = dynamic(() => import("@/components/sections/Achievements"));
 const Blog = dynamic(() => import("@/components/sections/Blog"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 
 export default function HomePage() {
   return (
@@ -40,6 +41,7 @@ export default function HomePage() {
         <Skills />
         <Achievements />
         <Blog />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

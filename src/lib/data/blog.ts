@@ -7,6 +7,7 @@ export interface BlogPost {
   tags: string[];
   slug: string;
   author: string;
+  publishedAt: string;
   content: string;
 }
 
@@ -30,6 +31,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Next.js", "NestJS", "TypeScript", "Product"],
     slug: "multi-tenant-education-platform-nextjs-nestjs",
     author: "G.T. Fahad",
+    publishedAt: "2026-03-10",
     content: `
       <p>ClassTablet is a multi-tenant management platform for students, teachers, and parents. As Founding Engineer, I helped design and ship end-to-end product flows spanning a Next.js dashboard and a NestJS + Fastify API backed by PostgreSQL (Drizzle) and Redis.</p>
       <h2>Why a monorepo?</h2>
@@ -59,6 +61,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["AI/ML", "Computer Vision", "Research", "NLP"],
     slug: "self-supervised-multilingual-visual-speech-recognition",
     author: "G.T. Fahad",
+    publishedAt: "2026-02-18",
     content: `
       <p>Visual Speech Recognition (VSR) aims to decode spoken words from lip movements alone. My thesis explores <strong>adaptive self-supervision</strong> for cross-language generalization in a multilingual Conformer-based architecture.</p>
       <h2>The problem</h2>
@@ -87,6 +90,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["TypeScript", "Security", "Zod", "Backend"],
     slug: "zod-contracts-better-auth-production",
     author: "G.T. Fahad",
+    publishedAt: "2026-01-22",
     content: `
       <p>One of the fastest ways to ship bugs in full-stack TypeScript is letting the API schema and UI forms diverge. At ClassTablet we addressed this with shared Zod schemas and better-auth for session handling.</p>
       <h2>Shared contracts</h2>
@@ -114,6 +118,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Machine Learning", "Healthcare", "Python"],
     slug: "atrial-fibrillation-detection-ecg-1d-cnn",
     author: "G.T. Fahad",
+    publishedAt: "2025-12-05",
     content: `
       <p>Atrial fibrillation (AF) is a common arrhythmia that increases stroke risk if undetected. In this project I worked with ECG segments from the MIT-BIH dataset to classify AF patterns.</p>
       <h2>Pipeline overview</h2>
@@ -145,6 +150,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["DevOps", "NestJS", "AWS", "Product"],
     slug: "payments-messaging-typescript-monorepo",
     author: "G.T. Fahad",
+    publishedAt: "2025-11-14",
     content: `
       <p>Payments and notifications are where "it works on my machine" dies in production. Here's how we structured these subsystems at ClassTablet.</p>
       <h2>Payments & billing</h2>
@@ -173,6 +179,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Computer Vision", "Research", "Healthcare"],
     slug: "systematic-review-vision-based-fall-detection",
     author: "G.T. Fahad",
+    publishedAt: "2025-10-02",
     content: `
       <p>Fall detection from video is an active research area with direct implications for elder care and assisted living. Our review analyzed <strong>100 recent architectural studies</strong> to map methods, trends, and open challenges.</p>
       <h2>Methods surveyed</h2>

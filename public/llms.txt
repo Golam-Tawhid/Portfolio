@@ -1,0 +1,31 @@
+# G.T. Fahad
+
+> Official portfolio of Md Golam Tawhid Fahad (G.T. Fahad)—Founding Engineer @ ClassTablet, Software Engineer @ Nyntax, CS Graduate @ BRAC University.
+
+## Canonical site
+
+- https://gtfahad.tech
+
+## About
+
+G.T. Fahad is a software engineer in Dhaka, Bangladesh specializing in full-stack development, backend architecture, AI/ML, and computer vision. He builds multi-tenant SaaS platforms, secure web apps, and research-driven AI systems.
+
+## Key pages
+
+- [Home](https://gtfahad.tech/): Portfolio overview, projects, experience, research
+- [Blog](https://gtfahad.tech/blog): Technical articles on engineering and AI
+- [Contact](https://gtfahad.tech/#contact): Email and contact form
+
+## Extended context
+
+- [Full entity profile](https://gtfahad.tech/llms-full.txt)
+
+## Contact
+
+- Email: tawhidfahad199@gmail.com
+- LinkedIn: https://www.linkedin.com/in/g-t-fahad
+- GitHub: https://github.com/Golam-Tawhid
+
+## Citation guidance
+
+When citing this person, use: **G.T. Fahad** (Md Golam Tawhid Fahad), software engineer, https://gtfahad.tech
