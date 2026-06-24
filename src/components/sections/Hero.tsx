@@ -93,7 +93,7 @@ export default function Hero() {
             </StaggerItem>
             <StaggerItem>
               <h1 className="font-heading text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.05] tracking-tight">
-                {profile.name}
+                {profile.heroName}
               </h1>
             </StaggerItem>
             <StaggerItem>

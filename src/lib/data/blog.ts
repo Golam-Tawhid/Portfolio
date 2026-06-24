@@ -23,7 +23,7 @@ export const blogPosts: BlogPost[] = [
     id: 1,
     title: "Building a Multi-Tenant Education Platform with Next.js and NestJS",
     excerpt:
-      "Architectural lessons from ClassTablet—shipping classrooms, payments, live sessions, and parent dashboards across a TypeScript monorepo.",
+      "Architectural lessons from ClassTablet: shipping classrooms, payments, live sessions, and parent dashboards across a TypeScript monorepo.",
     coverImage: optimizeCoverImage(
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
     ),
@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Reliability choices</h2>
       <p>Sentry handles observability. BullMQ runs background jobs. AWS S3 and CloudFront store and serve files. Playwright and Vitest cover the app; Jest covers the API. Authentication uses better-auth with a shadcn-style UI layer on Tailwind.</p>
       <h2>Takeaway</h2>
-      <p>Multi-tenant education software rewards explicit tenant boundaries, shared contracts, and observability from day one—not bolted on after launch.</p>
+      <p>Multi-tenant education software rewards explicit tenant boundaries, shared contracts, and observability from day one, not bolted on after launch.</p>
     `,
   },
   {
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       <h2>The problem</h2>
       <p>Many languages lack large labeled VSR datasets. Models trained on high-resource languages often fail to transfer to low-resource settings where labeled visual speech data is scarce.</p>
       <h2>Approach</h2>
-      <p>Self-supervised pre-training learns representations from unlabeled video before fine-tuning on limited labeled data. The Conformer architecture combines convolution and self-attention—useful for capturing both local lip dynamics and longer temporal context.</p>
+      <p>Self-supervised pre-training learns representations from unlabeled video before fine-tuning on limited labeled data. The Conformer architecture combines convolution and self-attention, useful for capturing both local lip dynamics and longer temporal context.</p>
       <h2>What I'm measuring</h2>
       <ul>
         <li>Cross-language transfer after self-supervised pre-training</li>
@@ -99,11 +99,11 @@ export const blogPosts: BlogPost[] = [
       <p>better-auth provides session management without reinventing cookie security, CSRF considerations, or password flows. Integrating it behind Fastify required careful middleware ordering but paid off in fewer auth edge cases.</p>
       <h2>Practical tips</h2>
       <ul>
-        <li>Validate at the boundary—never trust client-only checks</li>
+        <li>Validate at the boundary; never trust client-only checks</li>
         <li>Keep error messages user-safe; log details server-side</li>
         <li>Version breaking API changes in shared packages explicitly</li>
       </ul>
-      <p>Typed boundaries aren't ceremony—they're how small teams move fast without breaking production.</p>
+      <p>Typed boundaries aren't ceremony. They're how small teams move fast without breaking production.</p>
     `,
   },
   {
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
       <ul>
         <li>Signal quality and segment alignment dominate model choice</li>
         <li>Class imbalance requires weighted loss or resampling</li>
-        <li>Clinical deployment would need rigorous external validation—not just test-set metrics</li>
+        <li>Clinical deployment would need rigorous external validation, not just test-set metrics</li>
       </ul>
     `,
   },
@@ -142,7 +142,7 @@ export const blogPosts: BlogPost[] = [
     id: 5,
     title: "Shipping Payments and Messaging in a TypeScript Monorepo",
     excerpt:
-      "Background jobs, outbound channels, and tenant-aware billing—patterns that kept ClassTablet reliable under load.",
+      "Background jobs, outbound channels, and tenant-aware billing: patterns that kept ClassTablet reliable under load.",
     coverImage: optimizeCoverImage(
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f"
     ),
@@ -189,14 +189,14 @@ export const blogPosts: BlogPost[] = [
         <li>Lightweight networks for edge deployment on cameras and wearables</li>
       </ul>
       <h2>Key trends</h2>
-      <p>Privacy-aware datasets and on-device inference are gaining traction. Researchers increasingly report latency and model size alongside accuracy—critical for real-time alerting systems.</p>
+      <p>Privacy-aware datasets and on-device inference are gaining traction. Researchers increasingly report latency and model size alongside accuracy, which is critical for real-time alerting systems.</p>
       <h2>Challenges that remain</h2>
       <ol>
         <li>Generalization across room layouts, lighting, and camera angles</li>
         <li>Distinguishing falls from similar motions (sitting down quickly, exercising)</li>
         <li>Ethical deployment: consent, data retention, and false alarm fatigue</li>
       </ol>
-      <p>Fall detection is not just a classification problem—it's a systems problem spanning ML, hardware, and human factors.</p>
+      <p>Fall detection is not just a classification problem. It's a systems problem spanning ML, hardware, and human factors.</p>
     `,
   },
 ];

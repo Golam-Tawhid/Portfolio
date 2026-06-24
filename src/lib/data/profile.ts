@@ -1,6 +1,7 @@
 export const profile = {
   name: "G.T. Fahad",
   fullName: "Md Golam Tawhid Fahad",
+  heroName: "Golam Tawhid Fahad",
   tagline:
     "Building scalable software, secure systems, and research-driven AI solutions.",
   roles: [
@@ -26,9 +27,9 @@ export const profile = {
   },
   bio: [
     "Computer Science graduate from BRAC University with hands-on experience as a Full-Stack and Backend Engineer building multi-tenant architectures, secure web applications, and AI-driven solutions.",
-    "Currently serving as Founding Engineer at ClassTablet and Junior Software Engineer at Nyntax—shipping production systems with NestJS, Next.js, PostgreSQL, and TypeScript monorepos while maintaining reliability and performance.",
+    "Currently serving as Founding Engineer at ClassTablet and Junior Software Engineer at Nyntax, shipping production systems with NestJS, Next.js, PostgreSQL, and TypeScript monorepos while maintaining reliability and performance.",
     "Passionate about applying technical skills to solve real business and user needs, with research experience spanning visual speech recognition, biomedical signal processing, and computer vision.",
   ],
   philosophy:
-    "Reliable code, secure architecture, and measurable impact—engineering should earn trust at every layer of the stack.",
+    "Reliable code, secure architecture, and measurable impact. Engineering should earn trust at every layer of the stack.",
 };

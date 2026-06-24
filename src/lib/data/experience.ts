@@ -27,7 +27,7 @@ export const experiences: ExperienceItem[] = [
     duration: "Dec 2025 – Present",
     location: "Mirpur DOHS, Dhaka (Hybrid)",
     description:
-      "Multi-tenant management platform for students, teachers, and parents—designing and shipping end-to-end product flows across a TypeScript monorepo.",
+      "Multi-tenant management platform for students, teachers, and parents, designing and shipping end-to-end product flows across a TypeScript monorepo.",
     highlights: [
       "Next.js dashboard + NestJS/Fastify API with PostgreSQL (Drizzle), Redis, and better-auth",
       "Classrooms, assignments, attendance, live sessions (Amazon IVS), payments, and parent dashboards",

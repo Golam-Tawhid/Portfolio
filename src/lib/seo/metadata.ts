@@ -62,6 +62,9 @@ export const defaultMetadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "6GuR1SWmu2FKw2MgSVwS4kXvRCdcOJkO0",
+  },
   other: {
     "geo.region": "BD-C",
     "geo.placename": "Dhaka",

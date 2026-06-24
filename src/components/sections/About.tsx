@@ -10,7 +10,7 @@ export default function About() {
     <SectionShell
       id="about"
       title="About Me"
-      subtitle="From classroom to research lab to startup—building with purpose at every step."
+      subtitle="From classroom to research lab to startup, building with purpose at every step."
       className="bg-secondary/20"
     >
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">

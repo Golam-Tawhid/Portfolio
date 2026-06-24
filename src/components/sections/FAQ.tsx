@@ -15,7 +15,7 @@ export default function FAQ() {
     <SectionShell
       id="faq"
       title="FAQ"
-      subtitle="Quick answers about G.T. Fahad — for visitors, recruiters, and search engines."
+      subtitle="Quick answers about Fahad, for visitors, recruiters, and search engines."
     >
       <ScrollReveal className="mx-auto max-w-3xl">
         <Accordion type="single" collapsible className="w-full">
